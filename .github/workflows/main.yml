@@ -28,4 +28,4 @@ jobs:
           pip install pytest pytest-mock
 
       - name: Run pytest
-        run: pytest test_calculator.py
+        run: pytest -v test_calculator.py 
