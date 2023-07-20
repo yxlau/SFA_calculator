@@ -17,11 +17,15 @@ jobs:
           repository: yxlau/SFA_calculator
           ref: main
 
-      - name: Pull files
-        run: |
-          cd ~/home
-          git pull
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x # Replace 'x' with your desired Python version (e.g., 3.6, 3.7, 3.8, etc.)
+
       
-      - name: Run pytest
+      - name: Install dependencies
         run: |
-          pytest ./SFA_calculator
+          pip install pytest pytest-mock
+
+      - name: Run pytest
+        run: pytest test_calculator.py
