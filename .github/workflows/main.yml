@@ -1,0 +1,27 @@
+name: Calculator 
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build my project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v2
+        with:
+          repository: yxlau/SFA_calculator
+          ref: main
+
+      - name: Pull files
+        run: |
+          cd ~/home
+          git pull
+      
+      - name: Run pytest
+        run: |
+          pytest ./SFA_calculator
